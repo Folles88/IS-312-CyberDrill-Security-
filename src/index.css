@@ -15,6 +15,7 @@
   background: var(--bg);
 }
 
+/* Original automatic dark mode settings
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #12161b;
@@ -24,6 +25,17 @@
     --accent: #5aa9f2;
     --border: #2f3843;
   }
+}
+*/
+
+/* Dark mode colors */
+.app[data-theme="dark"]{
+  --bg: #12161b;
+  --surface: #1b2129;
+  --text: #e8ecf1;
+  --muted: #a3adb9;
+  --accent: #5aa9f2;
+  --border: #2f3843;
 }
 
 * { box-sizing: border-box; }
@@ -60,3 +72,62 @@ a { color: var(--accent); }
 }
 
 .site-footer { padding: 16px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+/* Mobile navigation */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px 12px;
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-header nav {
+    display: none;
+    width: 100%;
+  }
+
+  .site-header nav.nav-open {
+    display: block;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 0;
+  }
+}
+/* Theme toggle button */
+.theme-toggle {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Apply theme colors to the application */
+.app {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Tablet layout */
+@media (min-width: 601px) and (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
